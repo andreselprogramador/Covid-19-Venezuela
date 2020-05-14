@@ -52,20 +52,23 @@ obtenerDatosVenezuela();
 async function obtenerDatosMundo(){
     const respuesta_1 = await fetch(URL_MU);
     const datos_1 = await respuesta_1.json();
-    console.log(datos_1);
+    try{
+        for(let i = 1; i <= 5; i++){
+            let contenedor = document.createElement("div");
+            contenedor.innerHTML =`
+            <div class="pais" id="pais">
+            <div class="nombre"><h4>${datos_1[i].country}</h4></div>
+            <div class="todos infectados"><p>${new Intl.NumberFormat().format(datos_1[i].cases)} <span>positivos</span></p></div>
+            <div class="todos activos"><p>${new Intl.NumberFormat().format(datos_1[i].active)} <span>activos</span></p></div>
+            <div class="todos recuperados"><p>${new Intl.NumberFormat().format(datos_1[i].recovered)} <span>recuperados</span></p></div>
+            <div class="todos fallecidos"><p>${new Intl.NumberFormat().format(datos_1[i].deaths)} <span>fallecidos</span></p></div>
+            </div>
+            `;
+            casosPorPais.appendChild(contenedor);
+        }
 
-    for(let i = 1; i <= 5; i++){
-        let contenedor = document.createElement("div");
-        contenedor.innerHTML =`
-        <div class="pais" id="pais">
-        <div class="nombre"><h4>${datos_1[i].country}</h4></div>
-        <div class="todos infectados"><p>${new Intl.NumberFormat().format(datos_1[i].cases)} <span>positivos</span></p></div>
-        <div class="todos activos"><p>${new Intl.NumberFormat().format(datos_1[i].active)} <span>activos</span></p></div>
-        <div class="todos recuperados"><p>${new Intl.NumberFormat().format(datos_1[i].recovered)} <span>recuperados</span></p></div>
-        <div class="todos fallecidos"><p>${new Intl.NumberFormat().format(datos_1[i].deaths)} <span>fallecidos</span></p></div>
-        </div>
-        `;
-        casosPorPais.appendChild(contenedor);
+    }catch(error){
+        console.error(error);
     }
 }
 
@@ -74,9 +77,13 @@ obtenerDatosMundo();
 async function obtenerFecha(){
     const respuesta_2 = await fetch(URL_VE_2);
     const datos_2 = await respuesta_2.json();
-    console.log(datos_2);
-    console.log(datos_2[datos_2.length - 1]);
-    fecha.innerHTML = `ÚLtima actualización de los datos: 2020-05-13`;
+    let ultimo = datos_2.pop();
+    try{
+        fecha.innerHTML = `ÚLtima actualización de los datos: ${ultimo.Date}`;
+    }catch(error){
+        console.error(error);
+    }
+
 }
 
 obtenerFecha();
