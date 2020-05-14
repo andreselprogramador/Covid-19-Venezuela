@@ -335,6 +335,12 @@ footer  a{
     line-height: 1.6;
 }
 
+.contenedor-informacion-2 article h1{
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
 .contenedor-informacion-2 article h2{
     font-size: 30px;
     font-weight: 400;
