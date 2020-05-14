@@ -322,6 +322,35 @@ footer  a{
     color: #4CD97B;
 }
 
+.contenedor-informacion-2{
+    width: 100%;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.35);
+    -moz-box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.35);
+    box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.35);
+}
+.contenedor-informacion-2 article {
+    line-height: 1.6;
+}
+
+.contenedor-informacion-2 article h2{
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.contenedor-informacion-2 article  p{
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.contenedor-informacion-2 article  p span{
+    color: #4CD97B;
+    font-weight: 700;
+}
+
 @media only screen and (max-width: 575px) {
     .card-secundario .card{
         width: 100%;
